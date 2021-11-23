@@ -208,8 +208,7 @@ JPA - Hibernate
                                                 :: Entity persist(Entity e)                     //insert
                                                 :: Entity merge(Entity e)                       //update
                                                 :: void remove(Entity e)                        //delete
-                                                :: Entity get(Class entityClazz,Object prrimaryKeyValue);
-                                                :: Entity load(Class entityClazz,Object prrimaryKeyValue);
+                                                :: Entity find(Class entityClazz,Object prrimaryKeyValue);
                                                 :: EntityTransaction getTransaction();
                                                         |- :: begin()
                                                         |- :: commit()
