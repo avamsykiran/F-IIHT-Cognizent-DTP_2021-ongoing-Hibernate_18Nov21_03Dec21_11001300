@@ -94,18 +94,22 @@ JPA - Hibernate
                                                     Long empId;                     empid,name,basic
                                                     String name;
                                                     Double basic;
+                                                    @OneToMany
                                                     Set<TeamMembership> projects;
                                                 }     
 
                                                 class Project {                 Projects
                                                     Long projectId;                 prjId,title
                                                     String projectTitle;
+                                                    @OneToMany
                                                     Set<TeamMembership> team;
                                                 }
                                                 
                                                 class TeamMembership {          Memeberships
                                                     Long membershipId;              msid,empId,prId,role
+                                                    @ManyToOne
                                                     Employee member;
+                                                    @ManyToOne
                                                     Project project;
                                                     String role;
                                                 }
