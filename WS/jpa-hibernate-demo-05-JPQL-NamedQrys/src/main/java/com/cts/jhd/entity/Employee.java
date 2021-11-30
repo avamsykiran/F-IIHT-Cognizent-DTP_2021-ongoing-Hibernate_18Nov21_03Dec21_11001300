@@ -20,6 +20,10 @@ import javax.persistence.Table;
 	@NamedQuery(name = "ENAME_DNAME",query = "SELECT e.name,e.dept.name FROM Employee e"),
 	@NamedQuery(name = "ALL_EMPS_OF_RANGE",
 		query = "SELECT e FROM Employee e WHERE e.basic between :lb and :ub"),
+	@NamedQuery(name = "DEPT_EMP_COUNT",
+		query = "SELECT e.dept.name,COUNT(e) FROM Employee e GROUP BY e.dept"),
+	@NamedQuery(name = "DEPT_EMP_COUNT2",
+		query = "SELECT new com.cts.jhd.model.DeptEmpCount(e.dept.name,COUNT(e)) FROM Employee e GROUP BY e.dept")
 })
 
 @Entity

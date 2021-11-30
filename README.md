@@ -347,3 +347,11 @@ JPA - Hibernate
 </persistence>
 
 
+Case Study - D2HPortal
+--------------------------------------------------------------------------------------------
+
+    1. A Subscriber = subId,fullName,address(doorNum,street,pincode),one or more subscriptions
+    2. A Subscription = subpId,packaze,subsriber,startDate,endDate,isActive,receipt
+    3. A Packaze = packId,title,packCostPerMonth,one or more subscriptions,one or more channels
+    4. A Channel = chId,title,chCostPerMonth,packaze //a channel can belong to one package only for simplecity
+    5. A Receipt = receiptId,amountPayed,dateOfPayemnt,modeOfPayemnt

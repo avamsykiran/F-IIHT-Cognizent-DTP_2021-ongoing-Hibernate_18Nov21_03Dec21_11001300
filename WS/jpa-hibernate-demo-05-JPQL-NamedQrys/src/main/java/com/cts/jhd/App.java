@@ -11,6 +11,7 @@ import com.cts.jhd.entity.Address;
 import com.cts.jhd.entity.BankAccount;
 import com.cts.jhd.entity.Department;
 import com.cts.jhd.entity.Employee;
+import com.cts.jhd.model.DeptEmpCount;
 
 public class App {
 
@@ -38,6 +39,18 @@ public class App {
 		qry4.setParameter("lb", 50000.0);
 		qry4.setParameter("ub", 150000.0);
 		qry4.getResultStream().forEach(System.out::println);
+		
+		System.out.println("-------------------------------------------");
+		
+		Query qry5 = em.createNamedQuery("DEPT_EMP_COUNT");
+		((Stream<Object[]>)qry5.getResultStream()).
+		forEach(arr -> System.out.println(arr[0]+"\t"+arr[1]));
+
+		System.out.println("-------------------------------------------");
+		
+		TypedQuery<DeptEmpCount> qry6 = em.createNamedQuery("DEPT_EMP_COUNT2",DeptEmpCount.class);
+		qry6.getResultStream().forEach(System.out::println);
+		
 		
 		em.close();
 	}
