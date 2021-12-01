@@ -346,7 +346,6 @@ JPA - Hibernate
 	</persistence-unit>
 </persistence>
 
-
 Case Study - D2HPortal
 --------------------------------------------------------------------------------------------
 
@@ -355,3 +354,46 @@ Case Study - D2HPortal
     3. A Packaze = packId,title,packCostPerMonth,one or more subscriptions,one or more channels
     4. A Channel = chId,title,chCostPerMonth,packaze //a channel can belong to one package only for simplecity
     5. A Receipt = receiptId,amountPayed,dateOfPayemnt,modeOfPayemnt
+
+hibernate.cfg.xml
+-------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC 
+  "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+  "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <property name="connection.url">jdbc:mysql://localhost/database</property>
+    <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">root</property>
+    <property name="show_sql">true</property>
+    <property name="hbm2ddl.auto">update</property>
+  </session-factory>
+</hibernate-configuration>
+
+JPA                                 Hibernate
+----------------------------------------------------------
+EntityManagerFactory                SessionFactory
+EntityManager                       Session
+        persist                         save
+        merge                           update
+        remove                          delete
+                                        saveOrUpdate
+        find                            get
+        createQuery                     createQuery
+
+Spring Data JPA on Spring Boot
+------------------------------------------------------------
+
+    Spring Data is a spring module that provide auto-dynamic implementation of Reposiutories.
+
+    @Repository
+    interface EmployeeRepo extends JpaRepository<Employee,Long>{
+
+    }
+
+
+
+
