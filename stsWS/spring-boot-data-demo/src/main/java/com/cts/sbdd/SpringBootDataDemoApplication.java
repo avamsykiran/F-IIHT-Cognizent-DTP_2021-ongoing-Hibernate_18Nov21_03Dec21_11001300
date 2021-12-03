@@ -1,5 +1,7 @@
 package com.cts.sbdd;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -32,7 +34,7 @@ public class SpringBootDataDemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Department d = new Department("Accounts Dept");
+		/*Department d = new Department("Accounts Dept");
 
 		Employee e1 = new Employee(null, "Vinodh", 56800.0, 
 				new Address("4-16/1", "Vizag", "Andhra"), d);
@@ -45,6 +47,18 @@ public class SpringBootDataDemoApplication implements CommandLineRunner {
 		d.getEmployees().add(e1);
 		d.getEmployees().add(e2);
 
-		deptRepo.saveAndFlush(d);
+		deptRepo.saveAndFlush(d);*/
+		
+		List<BankAccount> accounts = bankRepo.findAll();
+		accounts.stream().forEach(System.out::println);
+		
+		System.out.println(empRepo.findById(1L).orElse(null));
+		System.out.println(empRepo.findById(12L).orElse(null));
+		
+		System.out.println(empRepo.existsById(2L));
+		System.out.println(empRepo.existsByName("Vamsy"));
+		System.out.println(empRepo.findAllByName("Vamsy"));
+		System.out.println("----------------------------------------------------------");
+		System.out.println(empRepo.getAllEmployeesInRangeOfBasic(50000.0, 100000.0));
 	}
 }

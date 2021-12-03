@@ -389,9 +389,19 @@ Spring Data JPA on Spring Boot
 
     Spring Data is a spring module that provide auto-dynamic implementation of Reposiutories.
 
+    exitsBy<FieldName>            boolean
+    findAllBy<FieldName>          List<Entity>
+    findBy<FieldName>             Optional<Entity>
+
     @Repository
     interface EmployeeRepo extends JpaRepository<Employee,Long>{
 
+        boolean existsByName(String name);
+        List<Employee> findAllByName(String name);
+        Optional<Employee> findByEmail(String email);
+
+        @Query("SELECT e FROM Employee e WHERE e.basic BETWEEN :lb AND :ub")
+        List<Employee> getAllEmployeesInRangeOfBasic(double lb,double ub);
     }
 
 
